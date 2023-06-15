@@ -1,5 +1,9 @@
 const express = require("express")
 
+// importando minha rotas dentro do src
+const checklist = require("./src/routes/check-list")
+const checklistRouters = require("./src/routes/check-list")
+
 // criando rota 
 
 const app = express()
@@ -41,6 +45,12 @@ app.get("/json", (req, res) => {
     }
     )
 })
+
+// Usando um arquivo de rota como se fosse um middleware
+
+    app.use(checklistRouters)
+
+
 
 // chamando o middleware que criei
 

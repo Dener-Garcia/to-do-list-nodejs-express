@@ -56,3 +56,7 @@ app.get("/json", (req, res) => {
 
 app.use(log)
 
+
+// trazendo variavel de configuracao do mongoose tudo que estiver dentro desse require vai rodar o que esta dentro do database.jss
+
+require("./config/database")

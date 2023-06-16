@@ -146,7 +146,8 @@ Teste tambem com o Put que serve para atualizar e Delete esta claro sua funcao.
 
 # Banco de dados MongoDB
 
-Apos instalar o Mongo na sua aplicacao com npm install mongo --save, aprenda alguns comando que sao importantes
+Entre no site oficial e instale o mongodb na sua maquina.
+Agora vamos instalar o Mongo na sua aplicacao com npm install mongo --save, aprenda alguns comando que sao importantes
 
 - show dbs : Mostra o nome dos bancos e o tamanho
 -  use nomeBanco : Troca para o nome do banco que voce digitou, caso nao exista quando voce criar a primeira collection ele ja cria o banco
@@ -161,7 +162,7 @@ Apos instalar o Mongo na sua aplicacao com npm install mongo --save, aprenda alg
 
 Inicie o terminal e digite os comandos abaixo
 
-        mongo
+        mongo - vai abrir o shell do mongo
         use todoList
         db.createCollection("tarefas")
         db.tarefas.insert({name: "Primeiro checklist", tasks" [{name: "tarefa 1"}, {name: "tarefa 2"}, {name: "tarefa 3"}]})
@@ -191,3 +192,18 @@ Insira o tempo agora no todoList2
 Ele trabalha como um adaptador (software entre o mongo e o node) ele conecta nosso Node > Express > MongoDb
 
 Instale o Mongoose com npm install mongoose --save na sua aplicacao
+
+### Organizando projeto
+
+Crie uma pasta chamada config na raiz do seu projeto e crie um arquivo chamada database.js onde vamos organizar todas as configuracoes do projeto
+
+        const meuMongoose = require("mongoose")
+        // configurando o montoose para usar a promisse global do node
+        meuMongoose.Promise = global.Promise
+
+        // conectando banco de dados com nossa aplicacao
+
+
+        meuMongoose.connect("mongodb://localhost/todo-list", { useUnifiedTopology: true})
+        .then(() => console.log("banco conectado ao mongoose"))
+        .catch((err) => console.error(err))
